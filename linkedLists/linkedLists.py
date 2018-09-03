@@ -1,3 +1,12 @@
+"""
+Linked list implementations are kept as basic as possible on purpose, with only
+a head node reference for singly-linked lists and head and tail node references
+for doubly-linked lists. This is so that scripts using these lists would
+contain all the code that could affect running time.
+
+This file also provides helper functions intended for use in testing solutions.
+"""
+
 class Node:
     """
     Node of a linked list (either singly- or doubly- linked)
@@ -70,6 +79,18 @@ def createDoublyLinkedList(dataList):
     dll.tail.prev = curNode
     
     return dll
+
+def appendToSinglyLinkedList(sll, newNode):
+    """
+    sll: singly-linked list to append to
+    newNode: node to append
+    """
+    # Find the tail node
+    curNode = sll.head
+    while curNode.next != None:
+        curNode = curNode.next
+    # Append new node to tail
+    curNode.next = newNode
 
 
 if __name__ == "__main__":
